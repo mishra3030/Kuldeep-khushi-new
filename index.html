@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,424 +9,240 @@
 
 <style>
 :root {
-  --pink: #e9a8b9;
-  --deep: #a94f6b;
-  --light: #fff5f7;
-  --cream: #fffaf6;
-  --gold: #c59b65;
-  --text: #654650;
+  --pink:#e8b9c5;
+  --deep:#ad657c;
+  --cream:#fffaf5;
+  --soft:#f9e9ed;
+  --gold:#c5a47a;
+  --text:#634b53;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html { scroll-behavior: smooth; }
-
+* {box-sizing:border-box;margin:0;padding:0}
+html {scroll-behavior:smooth}
 body {
-  background: var(--light);
-  color: var(--text);
-  font-family: 'Poppins', sans-serif;
-  overflow-x: hidden;
+  background:var(--cream);
+  color:var(--text);
+  font-family:'Poppins',sans-serif;
+  overflow-x:hidden;
 }
-
-button { font-family: inherit; cursor: pointer; }
-
-section {
-  padding: 75px 20px;
-  text-align: center;
-}
-
-.script {
-  font-family: 'Great Vibes', cursive;
-  color: var(--deep);
-  font-weight: 400;
-}
-
+button {font-family:inherit;cursor:pointer}
+section {padding:85px 20px;text-align:center}
 .heading {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(28px, 5vw, 43px);
-  color: var(--deep);
-  margin-bottom: 12px;
+  font:600 clamp(30px,5vw,48px) 'Playfair Display',serif;
+  color:var(--deep);
+  margin:12px 0;
 }
-
-.subheading {
-  font-size: 13px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 12px;
+.script {font-family:'Great Vibes',cursive;color:var(--deep)}
+.eyebrow {
+  color:var(--gold);
+  letter-spacing:4px;
+  text-transform:uppercase;
+  font-size:11px;
 }
-
-.main-btn {
-  border: none;
-  border-radius: 35px;
-  padding: 15px 30px;
-  background: linear-gradient(135deg, #c96f8b, #e8a9bb);
-  color: white;
-  font-size: 14px;
-  box-shadow: 0 8px 25px #c96f8b45;
-  transition: .3s;
+.description {
+  max-width:550px;margin:12px auto 35px;
+  font-size:13px;line-height:1.9;color:#927c82;
 }
+.btn {
+  border:0;border-radius:30px;padding:14px 30px;
+  color:white;background:linear-gradient(135deg,#d99caf,#b96f88);
+  box-shadow:0 8px 22px #bd829044;
+  transition:.3s;
+}
+.btn:hover {transform:translateY(-4px);box-shadow:0 12px 25px #bd829066}
+.reveal {opacity:0;transform:translateY(35px);transition:1s ease}
+.reveal.visible {opacity:1;transform:translateY(0)}
 
-.main-btn:hover { transform: translateY(-3px); }
-
+/* Welcome */
 #welcome {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 15% 20%, #ffffffc9, transparent 30%),
-    radial-gradient(circle at 85% 80%, #f2cbd5, transparent 35%),
-    linear-gradient(145deg, #fff7f8, #f8dfe6);
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 50% 40%,#fff 0,#fcecf0 55%,#f5dce3 100%);
+  position:relative;overflow:hidden;padding:30px;
 }
-
-.welcome-content {
-  position: relative;
-  z-index: 2;
-  max-width: 650px;
-  padding: 35px 15px;
+.welcome-card {
+  max-width:700px;width:100%;padding:55px 20px;
+  border:1px solid #ffffffb8;
+  background:#ffffff70;backdrop-filter:blur(12px);
+  border-radius:220px 220px 35px 35px;
+  box-shadow:0 20px 70px #b77e8c20;
+  animation:appear 1.5s ease both;
 }
-
-.welcome-content .small-heading {
-  color: var(--gold);
-  letter-spacing: 4px;
-  font-size: 12px;
-  text-transform: uppercase;
+.welcome-card .script {font-size:clamp(45px,9vw,85px)}
+.welcome-card h1 {
+  font:500 clamp(28px,6vw,48px) 'Playfair Display',serif;
+  margin:10px 0;color:#815765;
 }
-
-.welcome-names {
-  font-family: 'Great Vibes', cursive;
-  color: var(--deep);
-  font-size: clamp(55px, 12vw, 95px);
-  font-weight: 400;
-  margin: 20px 0;
+.welcome-card p {font-size:12px;letter-spacing:3px;margin:20px 0 28px}
+@keyframes appear {
+  from {opacity:0;transform:translateY(35px) scale(.96)}
+  to {opacity:1;transform:translateY(0) scale(1)}
 }
-
-.welcome-content p {
-  margin: 0 auto 30px;
-  font-size: 14px;
-  color: #86616b;
-}
-
+.petals {position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .petal {
-  position: absolute;
-  color: #d58da2;
-  opacity: .5;
-  animation: float 5s ease-in-out infinite;
+  position:absolute;top:-30px;width:12px;height:18px;
+  background:#e8b9c5a8;border-radius:100% 0 100% 0;
+  animation:fall linear infinite;
+}
+@keyframes fall {
+  to {transform:translateY(110vh) rotate(600deg);opacity:0}
 }
 
-.p1 { top: 12%; left: 10%; font-size: 35px; }
-.p2 { top: 65%; right: 10%; font-size: 45px; animation-delay: 1s; }
-.p3 { top: 25%; right: 17%; font-size: 25px; animation-delay: 2s; }
-.p4 { bottom: 12%; left: 18%; font-size: 30px; animation-delay: 1.5s; }
-
-@keyframes float {
-  0%,100% { transform: translateY(0) rotate(0); }
-  50% { transform: translateY(-18px) rotate(12deg); }
-}
-
+/* Hero */
+#main {display:none}
 .hero {
-  min-height: 75vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background: linear-gradient(#fff5f7dd, #fff5f7dd),
-    url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1400') center/cover;
+  min-height:90vh;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(#fffaf5d9,#f8e8eddb),
+  url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1600') center/cover;
+  padding:40px 20px;
 }
-
-.hero h1 {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(60px, 12vw, 105px);
-  color: var(--deep);
-  font-weight: 400;
+.hero-inner {
+  max-width:750px;padding:45px 25px;
+  background:#fffaf5d9;border:1px solid white;
+  box-shadow:0 20px 60px #8b52621c;
 }
+.hero .script {font-size:clamp(50px,10vw,100px)}
+.hero h2 {font:500 clamp(28px,5vw,44px) 'Playfair Display',serif}
+.hero p {margin-top:15px;font-size:13px;letter-spacing:2px}
 
-.hero p { margin-top: 12px; }
-
-.date-label {
-  margin-top: 25px;
-  color: var(--gold);
-  letter-spacing: 2px;
-  font-size: 12px;
+/* Counter */
+.counter-section {background:#fff}
+.counter-grid {
+  display:flex;justify-content:center;gap:12px;flex-wrap:wrap;
+  max-width:650px;margin:30px auto;
 }
-
-.counter-section {
-  background: var(--cream);
-}
-
-.counter-card {
-  max-width: 750px;
-  margin: 30px auto 0;
-  padding: 35px 15px;
-  background: white;
-  border: 1px solid #f1d6df;
-  border-radius: 22px;
-  box-shadow: 0 12px 35px #a94f6b12;
-}
-
-.counter {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 25px;
-}
-
 .time-box {
-  min-width: 105px;
-  padding: 18px 12px;
-  border-radius: 15px;
-  background: #fff0f4;
+  background:var(--soft);padding:22px 12px;border-radius:15px;
+  min-width:100px;box-shadow:0 8px 25px #c58d9c17;
 }
+.time-box strong {display:block;font:600 32px 'Playfair Display';color:var(--deep)}
+.time-box span {font-size:10px;letter-spacing:2px;text-transform:uppercase}
 
-.time-box strong {
-  display: block;
-  font-family: 'Playfair Display', serif;
-  font-size: 30px;
-  color: var(--deep);
-}
-
-.time-box span {
-  font-size: 11px;
-  color: #99717b;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.gallery-section { background: #fff5f7; }
-
+/* Gallery */
 .gallery {
-  max-width: 1050px;
-  margin: 35px auto 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:14px;max-width:950px;margin:auto;
 }
-
 .gallery img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  border-radius: 17px;
-  box-shadow: 0 8px 22px #8c52601c;
-  transition: .3s;
+  width:100%;height:270px;object-fit:cover;border-radius:12px;
+  cursor:pointer;transition:.5s;
 }
+.gallery img:hover {transform:scale(1.035);box-shadow:0 12px 25px #9b687533}
+#lightbox {
+  display:none;position:fixed;inset:0;background:#24171eeF;
+  z-index:20;align-items:center;justify-content:center;padding:20px;
+}
+#lightbox img {max-width:95%;max-height:85vh;border-radius:12px}
+#lightbox span {position:absolute;top:20px;right:25px;color:white;font-size:35px;cursor:pointer}
 
-.gallery img:hover { transform: scale(1.025); }
-
-.scratch-section { background: var(--cream); }
-
+/* Scratch */
 .scratch-card {
-  width: min(340px, 90vw);
-  height: 205px;
-  position: relative;
-  margin: 30px auto 15px;
-  border-radius: 20px;
-  overflow: hidden;
-  background: linear-gradient(135deg, #fff0f4, #f8dce5);
-  border: 1px solid #e8bac8;
-  box-shadow: 0 12px 30px #a94f6b17;
+  position:relative;max-width:420px;height:190px;margin:30px auto;
+  border-radius:18px;overflow:hidden;
+  background:linear-gradient(135deg,#fff,#f8e2e9);
+  display:grid;place-items:center;padding:25px;
+  box-shadow:0 12px 35px #bd82902b;
 }
-
-.scratch-message {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 25px;
-  font-family: 'Playfair Display', serif;
-  font-size: 19px;
-  line-height: 1.6;
-  color: var(--deep);
+.scratch-message {font:26px 'Great Vibes';color:var(--deep);line-height:1.5}
+.scratch-cover {
+  position:absolute;inset:0;background:linear-gradient(135deg,#d9a8b7,#f0d3db);
+  display:grid;place-items:center;color:white;
+  font:24px 'Playfair Display';transition:opacity .8s;
 }
+.scratch-cover.hidden {opacity:0;pointer-events:none}
 
-#scratchCanvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  touch-action: none;
-  cursor: crosshair;
-}
-
-.envelope-section { background: #fff5f7; }
-
+/* Envelopes */
 .envelopes {
-  max-width: 750px;
-  margin: 35px auto 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 18px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+  gap:18px;max-width:850px;margin:auto;
 }
-
 .envelope {
-  padding: 25px 15px;
-  border: 1px solid #edc8d3;
-  border-radius: 18px;
-  background: white;
-  color: var(--deep);
-  box-shadow: 0 8px 22px #a94f6b12;
-  transition: .3s;
+  min-height:130px;border:1px solid #edcbd4;border-radius:12px;
+  background:linear-gradient(145deg,#fff,#fae8ed);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;padding:15px;cursor:pointer;transition:.35s;
+  box-shadow:0 8px 20px #a66b7b12;
 }
-
-.envelope:hover { transform: translateY(-5px); }
-
-.envelope .symbol {
-  display: block;
-  font-size: 35px;
-  margin-bottom: 10px;
+.envelope:hover {transform:translateY(-8px) rotate(-1deg)}
+.envelope .symbol {font-size:35px}
+.envelope strong {font:500 16px 'Playfair Display';color:var(--deep)}
+#noteModal {
+  display:none;position:fixed;inset:0;background:#37232cbf;
+  z-index:30;align-items:center;justify-content:center;padding:20px;
 }
-
-.envelope h3 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 500;
-  font-size: 17px;
+.note-paper {
+  max-width:450px;width:100%;padding:45px 30px;
+  background:#fffaf5;border-radius:12px;
+  box-shadow:0 20px 60px #0003;animation:appear .4s ease;
 }
+.note-paper h3 {font:28px 'Great Vibes';color:var(--deep);margin-bottom:20px}
+.note-paper p {font-size:14px;line-height:2}
+.close {margin-top:25px;background:none;border:1px solid var(--pink);color:var(--deep);padding:9px 22px;border-radius:20px}
 
-.envelope small {
-  display: block;
-  margin-top: 8px;
-  color: #a77d88;
-}
-
-.message-box {
-  display: none;
-  max-width: 600px;
-  margin: 25px auto 0;
-  padding: 25px;
-  background: white;
-  border: 1px solid #edc8d3;
-  border-radius: 18px;
-  line-height: 1.8;
-  box-shadow: 0 8px 22px #a94f6b12;
-}
-
-.message-box.show { display: block; }
-
-.letter-section {
-  background: var(--cream);
-}
-
+/* Letter */
+.letter-section {background:linear-gradient(140deg,#fffaf5,#f9e9ed)}
 .letter {
-  max-width: 700px;
-  margin: 30px auto 0;
-  padding: 35px 28px;
-  text-align: left;
-  background: white;
-  border: 1px solid #ecd2da;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px #a94f6b12;
-  line-height: 2;
+  max-width:700px;margin:30px auto;padding:45px;
+  text-align:left;background:#fffdf9;
+  border:1px solid #ead4d7;border-radius:5px;
+  box-shadow:0 15px 45px #9c6b781c;
+  line-height:2;font-size:14px;
 }
+.letter .script {font-size:38px;margin-bottom:20px;text-align:center}
+.letter p {margin:0 0 17px}
+.letter-sign {text-align:right;font-family:'Great Vibes';font-size:29px;color:var(--deep);margin-top:25px}
 
-.letter .script {
-  font-size: 35px;
-  margin-bottom: 15px;
-}
-
-.letter-sign {
-  text-align: right;
-  margin-top: 25px;
-  font-family: 'Great Vibes', cursive;
-  font-size: 32px;
-  color: var(--deep);
-}
-
+/* Final */
 .final-section {
-  padding: 100px 20px;
-  background: linear-gradient(145deg, #f9dce5, #fff5f7);
+  background:linear-gradient(145deg,#f8e5eb,#fffaf5);
+  padding:110px 20px;
 }
-
-.final-section .script {
-  font-size: clamp(48px, 10vw, 78px);
-}
-
-.final-section p {
-  margin: 15px auto;
-  max-width: 550px;
-  line-height: 1.8;
-}
-
-footer {
-  padding: 22px;
-  text-align: center;
-  font-size: 11px;
-  color: #a77d88;
-  background: #fff;
-}
-
+.final-section .script {font-size:clamp(50px,10vw,90px)}
+footer {padding:25px;text-align:center;font-size:11px;color:#a88c95;background:#fff}
 .music-btn {
-  position: fixed;
-  bottom: 18px;
-  right: 18px;
-  z-index: 10;
-  border: 1px solid #edc8d3;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  background: white;
-  color: var(--deep);
-  font-size: 20px;
-  box-shadow: 0 5px 18px #a94f6b25;
+  position:fixed;bottom:20px;right:20px;z-index:15;
+  width:48px;height:48px;border:0;border-radius:50%;
+  background:#b96f88;color:white;font-size:20px;
+  box-shadow:0 5px 20px #87536544;
 }
-
-@media(max-width: 480px) {
-  section { padding: 60px 16px; }
-  .time-box { min-width: 72px; padding: 14px 8px; }
-  .time-box strong { font-size: 25px; }
-  .gallery img { height: 240px; }
-  .letter { padding: 25px 20px; }
+@media(max-width:650px) {
+  section {padding:65px 17px}
+  .gallery {grid-template-columns:repeat(2,1fr);gap:9px}
+  .gallery img {height:180px}
+  .letter {padding:28px 20px;font-size:13px}
+  .time-box {min-width:75px;padding:17px 8px}
+  .time-box strong {font-size:25px}
 }
 </style>
 </head>
-
 <body>
 
-<!-- WELCOME SCREEN -->
-<section id="welcome">
-  <div class="petal p1">✿</div>
-  <div class="petal p2">❀</div>
-  <div class="petal p3">✧</div>
-  <div class="petal p4">✿</div>
-
-  <div class="welcome-content">
-    <div class="small-heading">A Celebration of Love</div>
-    <h1 class="welcome-names">Khushi & Kuldeep</h1>
-    <p>One beautiful year, countless precious memories.</p>
-    <button class="main-btn" id="enterBtn" type="button">
-      Open Your Surprise ♡
-    </button>
+<div id="welcome">
+  <div class="petals" id="petals"></div>
+  <div class="welcome-card">
+    <div class="eyebrow">A little surprise, made with love</div>
+    <div class="script">Khushi & Kuldeep</div>
+    <h1>One Year of Togetherness</h1>
+    <p>24 NOVEMBER 2025 — FOREVER</p>
+    <button class="btn" onclick="openSurprise()">Open Your Surprise ✨</button>
   </div>
-</section>
+</div>
 
-<!-- MAIN WEBSITE -->
-<main id="mainContent" style="display:none;">
+<div id="main">
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">A beautiful journey begins</div>
+      <div class="script">Khushi & Kuldeep</div>
+      <h2>Happy First Anniversary</h2>
+      <p>ONE YEAR DOWN · FOREVER TO GO</p>
+    </div>
+  </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="subheading">Celebrating One Beautiful Year</div>
-    <h1>Happy Anniversary</h1>
-    <p>Khushi & Kuldeep</p>
-    <div class="date-label">24 NOVEMBER 2026</div>
-  </section>
-
-  <!-- COUNTER -->
   <section class="counter-section">
-    <div class="subheading">Every Second Is Precious</div>
-    <h2 class="heading">Our Time Together</h2>
-    <p>Together Since 24 November 2025</p>
-
-    <div class="counter-card">
-      <p class="script" style="font-size:32px;">And the journey continues...</p>
-      <div class="counter">
+    <div class="reveal">
+      <div class="eyebrow">Every second is precious</div>
+      <h2 class="heading">Our Time Together</h2>
+      <p class="description">Together since 24 November 2025. And every moment is another memory to cherish.</p>
+      <div class="counter-grid">
         <div class="time-box"><strong id="days">0</strong><span>Days</span></div>
         <div class="time-box"><strong id="hours">0</strong><span>Hours</span></div>
         <div class="time-box"><strong id="minutes">0</strong><span>Minutes</span></div>
@@ -436,298 +251,173 @@ footer {
     </div>
   </section>
 
-  <!-- GALLERY -->
-  <section class="gallery-section">
-    <div class="subheading">A Few Beautiful Moments</div>
-    <h2 class="heading">Our Wedding Memories</h2>
-    <p>Some moments deserve to be treasured forever.</p>
-
-    <div class="gallery">
-      <!-- Replace these sample photos with the couple's wedding photos -->
-      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=700" alt="Wedding celebration">
-      <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=700" alt="Wedding memories">
-      <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=700" alt="Wedding celebration">
-      <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=700" alt="Wedding flowers">
-      <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?w=700" alt="Wedding couple">
-      <img src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?w=700" alt="Wedding decoration">
+  <section>
+    <div class="reveal">
+      <div class="eyebrow">Little moments, endless memories</div>
+      <h2 class="heading">Our Beautiful Memories</h2>
+      <p class="description">A few moments from a journey that means so much.</p>
+    </div>
+    <div class="gallery reveal">
+      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=700" onclick="showImage(this)">
+      <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=700" onclick="showImage(this)">
+      <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=700" onclick="showImage(this)">
+      <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=700" onclick="showImage(this)">
+      <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?w=700" onclick="showImage(this)">
+      <img src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?w=700" onclick="showImage(this)">
     </div>
   </section>
 
-  <!-- SCRATCH CARD -->
-  <section class="scratch-section">
-    <div class="subheading">A Little Surprise</div>
-    <h2 class="heading">Scratch to Reveal</h2>
-    <p>There's a special message waiting underneath!</p>
+  <div id="lightbox" onclick="this.style.display='none'">
+    <span>×</span><img id="lightboxImage" src="">
+  </div>
 
-    <div class="scratch-card">
-      <div class="scratch-message">
-        Tumhare saath zindagi ka har pal aur bhi khoobsurat lagta hai. Yeh pehla saal toh bas ek shuruaat hai, abhi toh saath mein poori zindagi bitani hai.
+  <section style="background:#fff">
+    <div class="reveal">
+      <div class="eyebrow">A tiny surprise for you</div>
+      <h2 class="heading">A Little Something</h2>
+      <p class="description">Tap below to uncover a message hidden just for this special day.</p>
+      <div class="scratch-card">
+        <div class="scratch-message">Tumhare saath zindagi ka har pal aur bhi khoobsurat lagta hai. Yeh pehla saal toh bas ek shuruaat hai, abhi toh saath mein poori zindagi bitani hai. ❤️</div>
+        <div class="scratch-cover" id="scratchCover" onclick="revealScratch()">Tap to Reveal ✨</div>
       </div>
-      <canvas id="scratchCanvas"></canvas>
-    </div>
-    <p style="font-size:12px;color:#a77d88;">Gently scratch the pink layer to reveal your message ♡</p>
-  </section>
-
-  <!-- ENVELOPES -->
-  <section class="envelope-section">
-    <div class="subheading">Little Notes, Big Love</div>
-    <h2 class="heading">A Few Words From My Heart</h2>
-    <p>Open each little envelope for a special message.</p>
-
-    <div class="envelopes">
-      <button class="envelope" data-index="0">
-        <span class="symbol">✉</span>
-        <h3>Ek Chhota Sa Paighaam</h3>
-        <small>Tap to open</small>
-      </button>
-
-      <button class="envelope" data-index="1">
-        <span class="symbol">✉</span>
-        <h3>Hamari Khoobsurat Yaadein</h3>
-        <small>Tap to open</small>
-      </button>
-
-      <button class="envelope" data-index="2">
-        <span class="symbol">✉</span>
-        <h3>Dil Se Ek Dua</h3>
-        <small>Tap to open</small>
-      </button>
-
-      <button class="envelope" data-index="3">
-        <span class="symbol">✉</span>
-        <h3>Ek Special Reminder</h3>
-        <small>Tap to open</small>
-      </button>
-
-      <button class="envelope" data-index="4">
-        <span class="symbol">✉</span>
-        <h3>Anniversary Ki Badhai</h3>
-        <small>Tap to open</small>
-      </button>
-    </div>
-
-    <div class="message-box" id="messageBox" aria-live="polite">
-      <p id="messageText"></p>
     </div>
   </section>
 
-  
-  
-<!-- LETTER -->
-<section class="section letter-section">
-  <div class="reveal">
-    <div class="eyebrow">Written From The Heart</div>
-    <h2 class="heading">A Letter For You</h2>
-    <p class="description">
-      A few words, filled with love and countless feelings.
-    </p>
+  <section>
+    <div class="reveal">
+      <div class="eyebrow">Five little notes, lots of love</div>
+      <h2 class="heading">Little Notes, Big Love</h2>
+      <p class="description">Each envelope holds a little message. Open them one by one!</p>
+    </div>
+    <div class="envelopes reveal">
+      <div class="envelope" onclick="openNote(0)"><div class="symbol">💌</div><strong>Ek Chhota Sa Paighaam</strong></div>
+      <div class="envelope" onclick="openNote(1)"><div class="symbol">🌷</div><strong>Hamari Khoobsurat Yaadein</strong></div>
+      <div class="envelope" onclick="openNote(2)"><div class="symbol">🕊️</div><strong>Dil Se Ek Dua</strong></div>
+      <div class="envelope" onclick="openNote(3)"><div class="symbol">🎀</div><strong>Ek Special Reminder</strong></div>
+      <div class="envelope" onclick="openNote(4)"><div class="symbol">✨</div><strong>Anniversary Ki Badhai</strong></div>
+    </div>
+  </section>
 
-    <div class="letter">
-      <div class="script">Meri Pyaari Khushi ❤️</div>
-
-      <p>Dear Khushi,</p>
-
-      <p>
-        Dekhte hi dekhte humari shaadi ko ek saal ho gaya.
-        Kabhi-kabhi sochta hoon ki waqt kitni jaldi beet jaata hai.
-        24 November 2025 ko shuru hua humara yeh khoobsurat safar
-        aaj apna pehla saal poora kar chuka hai.
-      </p>
-
-      <p>
-        Yeh ek saal mere liye bahut khaas raha. Is dauraan humne
-        kitni saari chhoti-badi yaadein banayi, kitne khoobsurat
-        pal saath bitaye aur zindagi ke naye-naye rang dekhe.
-        Tumhara saath hona meri zindagi ko aur bhi khoobsurat banata hai.
-      </p>
-
-      <p>
-        Main shayad har baar apni feelings shabdon mein bayaan na kar paun,
-        lekin itna zaroor kehna chahta hoon ki tum mere liye bahut special ho.
-        Tumhari muskurahat, tumhara saath aur tumhara meri zindagi ka hissa
-        hona mere liye kisi tohfe se kam nahi hai.
-      </p>
-
-      <p>
-        Bas yahi chahta hoon ki humara yeh saath hamesha yunhi bana rahe.
-        Zindagi mein chahe kitne bhi utaar-chadhaav aayein, hum ek-doosre
-        ka haath thaam kar har pal ko khoobsurat banate rahein.
-      </p>
-
-      <p>
-        Aaj humari first anniversary par tumse bas ek hi baat kehni hai —
-        <strong>yeh pehla saal toh bas ek shuruaat hai, abhi toh humari
-        zindagi ke bahut saare khoobsurat panne likhne baaki hain.</strong>
-      </p>
-
-      <p>Thank you meri zindagi ko itna khoobsurat banane ke liye.</p>
-
-      <p><strong>Happy First Anniversary, Khushi!</strong></p>
-
-      <div class="letter-sign">
-        Dher saara pyaar,<br>
-        Tumhara Kuldeep ❤️
-      </div>
+  <div id="noteModal" onclick="if(event.target===this)this.style.display='none'">
+    <div class="note-paper">
+      <h3 id="noteTitle"></h3>
+      <p id="noteText"></p>
+      <button class="close" onclick="document.getElementById('noteModal').style.display='none'">Close</button>
     </div>
   </div>
-</section>
-  
-  <!-- FINAL CELEBRATION -->
-  <section class="final-section">
-    <div class="subheading">And This Is Just The Beginning</div>
-    <h2 class="script">Happy First Anniversary!</h2>
-    <p>
-      Ek saal ki khoobsurat yaadein, aur abhi toh zindagi bhar ka safar baaki hai.
-      May every new chapter be even more beautiful than the last.
-    </p>
-    <div style="font-size:35px;margin-top:25px;color:#c59b65;">✧ ♡ ✧</div>
-    <p style="font-family:'Great Vibes',cursive;font-size:35px;color:#a94f6b;">
-      Forever & Always
-    </p>
+
+  <!-- LETTER -->
+  <section class="section letter-section">
+    <div class="reveal">
+      <div class="eyebrow">Written From The Heart</div>
+      <h2 class="heading">A Letter For You</h2>
+      <p class="description">A few words, filled with love and countless feelings.</p>
+      <div class="letter">
+        <div class="script">Meri Pyaari Khushi ❤️</div>
+        <p>Dear Khushi,</p>
+        <p>Dekhte hi dekhte humari shaadi ko ek saal ho gaya. Kabhi-kabhi sochta hoon ki waqt kitni jaldi beet jaata hai. 24 November 2025 ko shuru hua humara yeh khoobsurat safar aaj apna pehla saal poora kar chuka hai.</p>
+        <p>Yeh ek saal mere liye bahut khaas raha. Is dauraan humne kitni saari chhoti-badi yaadein banayi, kitne khoobsurat pal saath bitaye aur zindagi ke naye-naye rang dekhe. Tumhara saath hona meri zindagi ko aur bhi khoobsurat banata hai.</p>
+        <p>Main shayad har baar apni feelings shabdon mein bayaan na kar paun, lekin itna zaroor kehna chahta hoon ki tum mere liye bahut special ho. Tumhari muskurahat, tumhara saath aur tumhara meri zindagi ka hissa hona mere liye kisi tohfe se kam nahi hai.</p>
+        <p>Bas yahi chahta hoon ki humara yeh saath hamesha yunhi bana rahe. Zindagi mein chahe kitne bhi utaar-chadhaav aayein, hum ek-doosre ka haath thaam kar har pal ko khoobsurat banate rahein.</p>
+        <p>Aaj humari first anniversary par tumse bas ek hi baat kehni hai — <strong>yeh pehla saal toh bas ek shuruaat hai, abhi toh humari zindagi ke bahut saare khoobsurat panne likhne baaki hain.</strong></p>
+        <p>Thank you meri zindagi ko itna khoobsurat banane ke liye.</p>
+        <p><strong>Happy First Anniversary, Khushi!</strong></p>
+        <div class="letter-sign">Dher saara pyaar,<br>Tumhara Kuldeep ❤️</div>
+      </div>
+    </div>
   </section>
 
-  <footer>Made with love for Khushi & Kuldeep ♡</footer>
+  <section class="final-section">
+    <div class="reveal">
+      <div class="eyebrow">And this is only the beginning</div>
+      <div class="script">To Many More Years</div>
+      <h2 class="heading">Happy Anniversary!</h2>
+      <p class="description">May your journey together always be filled with laughter, warmth and countless beautiful memories.</p>
+      <button class="btn" onclick="celebrate()">Celebrate This Day ✨</button>
+    </div>
+  </section>
 
-</main>
+  <footer>Made with love, for Khushi & Kuldeep · 24 November 2026</footer>
+</div>
 
-<!-- OPTIONAL BACKGROUND MUSIC: Add a licensed music file named music.mp3 -->
-<audio id="backgroundMusic" loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<button class="music-btn" id="musicBtn" type="button"
-  aria-label="Toggle background music" style="display:none;">♫</button>
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Music">♫</button>
+<audio id="music" loop src="music.mp3"></audio>
 
 <script>
-/* WELCOME BUTTON */
-const enterBtn = document.getElementById('enterBtn');
-
-enterBtn.addEventListener('click', function () {
-  document.getElementById('welcome').style.display = 'none';
-  document.getElementById('mainContent').style.display = 'block';
-  window.scrollTo(0, 0);
-
-  const music = document.getElementById('backgroundMusic');
-  const musicBtn = document.getElementById('musicBtn');
-
-  musicBtn.style.display = 'block';
-  music.play().then(() => {
-    musicBtn.textContent = '♫';
-  }).catch(() => {
-    musicBtn.textContent = '♪';
-  });
-});
-
-/* TOGETHERNESS COUNTER */
-function updateCounter() {
-  const startDate = new Date(2025, 10, 24, 0, 0, 0);
-  const now = new Date();
-  let difference = Math.max(0, now - startDate);
-
-  const days = Math.floor(difference / 86400000);
-  const hours = Math.floor((difference / 3600000) % 24);
-  const minutes = Math.floor((difference / 60000) % 60);
-  const seconds = Math.floor((difference / 1000) % 60);
-
-  document.getElementById('days').textContent = days;
-  document.getElementById('hours').textContent = hours;
-  document.getElementById('minutes').textContent = minutes;
-  document.getElementById('seconds').textContent = seconds;
-}
-
-updateCounter();
-setInterval(updateCounter, 1000);
-
-/* SCRATCH CARD */
-const canvas = document.getElementById('scratchCanvas');
-const ctx = canvas.getContext('2d');
-let scratching = false;
-
-function setupScratchCard() {
-  const rect = canvas.getBoundingClientRect();
-  const ratio = window.devicePixelRatio || 1;
-
-  canvas.width = rect.width * ratio;
-  canvas.height = rect.height * ratio;
-  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-
-  ctx.globalCompositeOperation = 'source-over';
-  const gradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
-  gradient.addColorStop(0, '#d989a2');
-  gradient.addColorStop(1, '#edb7c6');
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, rect.width, rect.height);
-
-  ctx.fillStyle = '#ffffff';
-  ctx.font = '500 17px Poppins';
-  ctx.textAlign = 'center';
-  ctx.fillText('Scratch Here ♡', rect.width / 2, rect.height / 2);
-}
-
-function scratch(event) {
-  if (!scratching) return;
-
-  const rect = canvas.getBoundingClientRect();
-  const x = event.clientX - rect.left;
-  const y = event.clientY - rect.top;
-
-  ctx.globalCompositeOperation = 'destination-out';
-  ctx.beginPath();
-  ctx.arc(x, y, 19, 0, Math.PI * 2);
-  ctx.fill();
-}
-
-canvas.addEventListener('pointerdown', function(event) {
-  scratching = true;
-  canvas.setPointerCapture(event.pointerId);
-  scratch(event);
-});
-
-canvas.addEventListener('pointermove', scratch);
-
-canvas.addEventListener('pointerup', function() {
-  scratching = false;
-});
-
-canvas.addEventListener('pointercancel', function() {
-  scratching = false;
-});
-
-setupScratchCard();
-
-/* ENVELOPE MESSAGES */
 const messages = [
-  "Bas itna kehna hai ki tumhara saath meri zindagi ko aur bhi khoobsurat bana deta hai.",
-  "Woh shaadi ka din aur usse judi saari yaadein… aaj bhi dil mein bilkul waise hi basi hui hain.",
-  "Bas yahi dua hai ki humari zindagi mein khushiyan bani rahein aur hum har mod par ek-doosre ka saath nibhate rahein.",
-  "Saalo ka safar chahe kitna bhi lamba ho jaaye, tum mere liye hamesha utni hi khaas rahogi.",
-  "Happy First Anniversary! Tumhare saath bitaya hua yeh pehla saal bahut khoobsurat raha. Abhi toh zindagi bhar ki yaadein banani hain!"
+["Ek Chhota Sa Paighaam","Bas itna kehna hai ki tumhara saath meri zindagi ko aur bhi khoobsurat bana deta hai."],
+["Hamari Khoobsurat Yaadein","Woh shaadi ka din aur usse judi saari yaadein… aaj bhi dil mein bilkul waise hi basi hui hain."],
+["Dil Se Ek Dua","Bas yahi dua hai ki humari zindagi mein khushiyan bani rahein aur hum har mod par ek-doosre ka saath nibhate rahein."],
+["Ek Special Reminder","Saalo ka safar chahe kitna bhi lamba ho jaaye, tum mere liye hamesha utni hi khaas rahogi."],
+["Anniversary Ki Badhai","Happy First Anniversary! Tumhare saath bitaya hua yeh pehla saal bahut khoobsurat raha. Abhi toh zindagi bhar ki yaadein banani hain!"]
 ];
 
-document.querySelectorAll('.envelope').forEach(function(button) {
-  button.addEventListener('click', function() {
-    const index = Number(button.dataset.index);
-    document.getElementById('messageText').textContent = messages[index];
-    document.getElementById('messageBox').classList.add('show');
-  });
-});
+function openSurprise(){
+ document.getElementById('welcome').style.display='none';
+ document.getElementById('main').style.display='block';
+ window.scrollTo(0,0);
+ revealObserver.observe(document.body);
+ setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el)),100);
+}
+function revealScratch(){
+ document.getElementById('scratchCover').classList.add('hidden');
+}
+function openNote(i){
+ document.getElementById('noteTitle').textContent=messages[i][0];
+ document.getElementById('noteText').textContent=messages[i][1];
+ document.getElementById('noteModal').style.display='flex';
+}
+function showImage(img){
+ document.getElementById('lightboxImage').src=img.src;
+ document.getElementById('lightbox').style.display='flex';
+}
+const startDate=new Date(2025,10,24,0,0,0).getTime();
+function updateCounter(){
+ let diff=Math.max(0,Date.now()-startDate);
+ const d=Math.floor(diff/86400000);
+ const h=Math.floor(diff/3600000)%24;
+ const m=Math.floor(diff/60000)%60;
+ const s=Math.floor(diff/1000)%60;
+ document.getElementById('days').textContent=d;
+ document.getElementById('hours').textContent=h;
+ document.getElementById('minutes').textContent=m;
+ document.getElementById('seconds').textContent=s;
+}
+setInterval(updateCounter,1000);updateCounter();
 
-/* MUSIC CONTROL */
-const music = document.getElementById('backgroundMusic');
-const musicBtn = document.getElementById('musicBtn');
-
-musicBtn.addEventListener('click', function() {
-  if (music.paused) {
-    music.play().then(() => {
-      musicBtn.textContent = '♫';
-    }).catch(() => {});
-  } else {
-    music.pause();
-    musicBtn.textContent = '♪';
+const revealObserver=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   entry.target.classList.add('visible');
+   revealObserver.unobserve(entry.target);
   }
-});
-</script>
+ });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
 
+function toggleMusic(){
+ const music=document.getElementById('music');
+ if(music.paused){music.play();document.getElementById('musicBtn').textContent='Ⅱ'}
+ else{music.pause();document.getElementById('musicBtn').textContent='♫'}
+}
+function celebrate(){
+ for(let i=0;i<90;i++){
+  const el=document.createElement('span');
+  el.textContent=['✦','✧','❀','♥'][Math.floor(Math.random()*4)];
+  el.style.cssText=`position:fixed;z-index:50;left:${Math.random()*100}vw;top:-20px;color:${['#d88da5','#c6a47a','#e9b8c7'][i%3]};font-size:${12+Math.random()*20}px;pointer-events:none;animation:fall ${2+Math.random()*3}s linear forwards`;
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),5000);
+ }
+}
+for(let i=0;i<25;i++){
+ const p=document.createElement('span');
+ p.className='petal';
+ p.style.left=Math.random()*100+'%';
+ p.style.animationDuration=(7+Math.random()*10)+'s';
+ p.style.animationDelay=(-Math.random()*15)+'s';
+ document.getElementById('petals').appendChild(p);
+}
+</script>
 </body>
-  </html>
+</html>
   
